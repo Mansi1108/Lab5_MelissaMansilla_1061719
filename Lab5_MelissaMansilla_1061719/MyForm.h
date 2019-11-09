@@ -8,6 +8,8 @@ namespace Lab5MelissaMansilla1061719 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
+	using namespace System::Diagnostics;
 
 	/// <summary>
 	/// Summary for MyForm
@@ -39,11 +41,18 @@ namespace Lab5MelissaMansilla1061719 {
 	protected:
 
 	private: System::Windows::Forms::Button^  btnGenerarArreglo;
-	private: System::Windows::Forms::Button^  btnBuscar;
+	private: System::Windows::Forms::Button^  btnSecuencial;
+
 	private: System::Windows::Forms::TextBox^  TBvalorB;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Button^  btnHashing;
+
+	private: System::Windows::Forms::Button^  btnBinario;
+
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  tiempolbl;
+	private: System::Windows::Forms::Label^  lblpos;
+	private: System::Windows::Forms::Label^  label5;
 
 
 	private:
@@ -62,11 +71,15 @@ namespace Lab5MelissaMansilla1061719 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->TBCant = (gcnew System::Windows::Forms::TextBox());
 			this->btnGenerarArreglo = (gcnew System::Windows::Forms::Button());
-			this->btnBuscar = (gcnew System::Windows::Forms::Button());
+			this->btnSecuencial = (gcnew System::Windows::Forms::Button());
 			this->TBvalorB = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->btnHashing = (gcnew System::Windows::Forms::Button());
+			this->btnBinario = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->tiempolbl = (gcnew System::Windows::Forms::Label());
+			this->lblpos = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -95,15 +108,15 @@ namespace Lab5MelissaMansilla1061719 {
 			this->btnGenerarArreglo->UseVisualStyleBackColor = true;
 			this->btnGenerarArreglo->Click += gcnew System::EventHandler(this, &MyForm::btnGenerarArreglo_Click);
 			// 
-			// btnBuscar
+			// btnSecuencial
 			// 
-			this->btnBuscar->Location = System::Drawing::Point(346, 86);
-			this->btnBuscar->Name = L"btnBuscar";
-			this->btnBuscar->Size = System::Drawing::Size(107, 37);
-			this->btnBuscar->TabIndex = 5;
-			this->btnBuscar->Text = L"Secuencial";
-			this->btnBuscar->UseVisualStyleBackColor = true;
-			this->btnBuscar->Click += gcnew System::EventHandler(this, &MyForm::btnBuscar_Click);
+			this->btnSecuencial->Location = System::Drawing::Point(346, 86);
+			this->btnSecuencial->Name = L"btnSecuencial";
+			this->btnSecuencial->Size = System::Drawing::Size(107, 37);
+			this->btnSecuencial->TabIndex = 5;
+			this->btnSecuencial->Text = L"Secuencial";
+			this->btnSecuencial->UseVisualStyleBackColor = true;
+			this->btnSecuencial->Click += gcnew System::EventHandler(this, &MyForm::btnBuscar_Click);
 			// 
 			// TBvalorB
 			// 
@@ -121,33 +134,74 @@ namespace Lab5MelissaMansilla1061719 {
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Valor a Buscar:";
 			// 
-			// button1
+			// btnHashing
 			// 
-			this->button1->Location = System::Drawing::Point(346, 129);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(107, 37);
-			this->button1->TabIndex = 6;
-			this->button1->Text = L"Hashing";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->btnHashing->Location = System::Drawing::Point(346, 129);
+			this->btnHashing->Name = L"btnHashing";
+			this->btnHashing->Size = System::Drawing::Size(107, 37);
+			this->btnHashing->TabIndex = 6;
+			this->btnHashing->Text = L"Hashing";
+			this->btnHashing->UseVisualStyleBackColor = true;
+			this->btnHashing->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// button2
+			// btnBinario
 			// 
-			this->button2->Location = System::Drawing::Point(346, 172);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(107, 37);
-			this->button2->TabIndex = 7;
-			this->button2->Text = L"Binario";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btnBinario->Location = System::Drawing::Point(346, 172);
+			this->btnBinario->Name = L"btnBinario";
+			this->btnBinario->Size = System::Drawing::Size(107, 37);
+			this->btnBinario->TabIndex = 7;
+			this->btnBinario->Text = L"Binario";
+			this->btnBinario->UseVisualStyleBackColor = true;
+			this->btnBinario->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(24, 198);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(160, 20);
+			this->label3->TabIndex = 8;
+			this->label3->Text = L"Tiempo de Ejecucion:";
+			// 
+			// tiempolbl
+			// 
+			this->tiempolbl->AutoSize = true;
+			this->tiempolbl->Location = System::Drawing::Point(191, 198);
+			this->tiempolbl->Name = L"tiempolbl";
+			this->tiempolbl->Size = System::Drawing::Size(18, 20);
+			this->tiempolbl->TabIndex = 9;
+			this->tiempolbl->Text = L"0";
+			// 
+			// lblpos
+			// 
+			this->lblpos->AutoSize = true;
+			this->lblpos->Location = System::Drawing::Point(665, 94);
+			this->lblpos->Name = L"lblpos";
+			this->lblpos->Size = System::Drawing::Size(18, 20);
+			this->lblpos->TabIndex = 11;
+			this->lblpos->Text = L"0";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(506, 94);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(131, 20);
+			this->label5->TabIndex = 10;
+			this->label5->Text = L"Se encuentra en:";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(724, 237);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->btnBuscar);
+			this->Controls->Add(this->lblpos);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->tiempolbl);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->btnBinario);
+			this->Controls->Add(this->btnHashing);
+			this->Controls->Add(this->btnSecuencial);
 			this->Controls->Add(this->TBvalorB);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->btnGenerarArreglo);
@@ -164,11 +218,13 @@ namespace Lab5MelissaMansilla1061719 {
 	private: ArrayList ^ Arreglo = gcnew ArrayList();
 	//Arreglo tabla hash 
 	private: Hashtable^ TablaHash = gcnew Hashtable();
-	
+	private: int size;
 	private: System::Void btnGenerarArreglo_Click(System::Object^  sender, System::EventArgs^  e) {
 		int cantidad = System::Convert::ToInt16(TBCant->Text);
 		generarNumerosAleatorios(cantidad);
 		mostrarNumerosAleatorios();
+		LLenarTablaHash(cantidad);
+		size = cantidad;
 	}
 			 //Llenar el arreglo con numeros aleatorios.
 	private: System::Void generarNumerosAleatorios(int size) {
@@ -202,16 +258,13 @@ namespace Lab5MelissaMansilla1061719 {
 			TablaHash->Add(llave, num);
 		}
 	}
-	private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
-		int valorBuscar = System::Convert::ToInt16(TBvalorB->Text);
-	}
 	private: System::Int16 PosicionEnHash(int valorBuscar, int size) {
 		int posicion = valorBuscar % (size * 2);
 		if (TablaHash[posicion] == valorBuscar)
 		{
 			return posicion;
 		}
-		else 
+		else
 		{
 			while (TablaHash[posicion] != valorBuscar)
 			{
@@ -220,7 +273,85 @@ namespace Lab5MelissaMansilla1061719 {
 			return posicion;
 		}
 	}
+	
+private: System::Void btnBuscar_Click(System::Object^  sender, System::EventArgs^  e) {
+		
+		int valorBuscar = System::Convert::ToInt16(TBvalorB->Text);
+		Stopwatch^ Timer = gcnew Stopwatch();
+		Timer->Start();
+		int x = busquedaSecuencial(Arreglo, valorBuscar, size);
+		lblpos->Text = System::Convert::ToString(x);
+		Timer->Stop();
+		tiempolbl->Text = System::Convert::ToString(Timer->Elapsed);
+	}
+	private: System::Int16 busquedaSecuencial(ArrayList^ Arreglo, int valorBuscar, int size)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			if (valorBuscar == System::Convert::ToInt16(Arreglo[i]))
+			{
+				return i + 1;
+			}
+		}
+	}
+
+
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	int valorBuscar = System::Convert::ToInt16(TBvalorB->Text);
+	Stopwatch^ Timer = gcnew Stopwatch();
+	Timer->Start();
+	int x = busquedaHashing(valorBuscar, size);
+	lblpos->Text = System::Convert::ToString(x);
+	Timer->Stop();
+	tiempolbl->Text = System::Convert::ToString(Timer->Elapsed);
+}
+private: System::Int16 busquedaHashing(int valorBuscar, int size)
+{
+	int posicion = valorBuscar % size;
+	if (System::Convert::ToInt16(TablaHash[posicion]) == valorBuscar)
+		return posicion;
+	while (System::Convert::ToInt16(TablaHash[posicion]) != valorBuscar)
+	{
+		posicion++;
+	}
+	return posicion;
+}
+
+
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	int valorBuscar = System::Convert::ToInt16(TBvalorB->Text);
+	Stopwatch^ Timer = gcnew Stopwatch();
+	Timer->Start();
+	int x = busquedaBinaria(Arreglo, valorBuscar, size);
+	lblpos->Text = System::Convert::ToString(x);
+	Timer->Stop();
+	tiempolbl->Text = System::Convert::ToString(Timer->Elapsed);
+}
+private: System::Int16 busquedaBinaria(ArrayList^ Arreglo, int valorBuscar, int size)
+{
+	//los metodos de busqueda fueron brindados en la clase teorica, en la presentacion de busquedas.
+	int inicio = 0;
+	int enmedio;
+	int final = size - 1;
+	while (inicio <= final)
+	{
+		enmedio = (inicio + final) / 2;
+
+		if (valorBuscar == System::Convert::ToInt16(Arreglo[enmedio]))
+		{
+			return enmedio + 1;
+		}
+		else {
+			if (System::Convert::ToInt16(Arreglo[enmedio]) > valorBuscar)
+			{
+				final = enmedio - 1;
+			}
+			else {
+				inicio = enmedio + 1;
+			}
+		}
+	}
+	return -1;
 }
 };
 }

@@ -1,3 +1,4 @@
 ﻿  MyForm.cpp
+d:\mansilla\url\prograavanzada\lab5_melissamansilla_1061719\lab5_melissamansilla_1061719\myform.h(296): warning C4715: 'Lab5MelissaMansilla1061719::MyForm::busquedaSecuencial': not all control paths return a value
   MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Lab5_MelissaMansilla_1061719.vcxproj -> D:\Mansilla\URL\PrograAvanzada\Lab5_MelissaMansilla_1061719\Debug\Lab5_MelissaMansilla_1061719.exe
