@@ -322,6 +322,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	int valorBuscar = System::Convert::ToInt16(TBvalorB->Text);
 	Stopwatch^ Timer = gcnew Stopwatch();
 	Timer->Start();
+	Arreglo->Sort();
 	int x = busquedaBinaria(Arreglo, valorBuscar, size);
 	lblpos->Text = System::Convert::ToString(x);
 	Timer->Stop();
